@@ -101,9 +101,15 @@ async function addItem(){
     return;
   }
 
-  const res=await apiPost({
-    action:'addTransaction',
-    data:{date:new Date().toISOString().split('T')[0],amount:amountVal,desc:desc.value,category:category.value,type}
+  const res = await apiPost({
+  action:'addTransaction',
+  data:{
+      date:new Date().toISOString().split('T')[0],
+      amount:amountVal,
+      desc:descVal,
+      category:category.value,
+      type
+    }
   });
 
   if(res.success){ data.unshift(res.data); renderAll(); }
