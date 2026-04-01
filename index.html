@@ -95,7 +95,11 @@ async function apiPost(b){
 
 async function addItem(){
   const amountVal=Number(amount.value);
-  if(!amountVal) return alert('กรอกจำนวนเงิน');
+  const descVal=desc.value || '-'; // ถ้าไม่กรอก ให้เป็น '-'
+  if(!amountVal){
+    alert('กรอกจำนวนเงิน');
+    return;
+  }
 
   const res=await apiPost({
     action:'addTransaction',
